@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>
+    Nueva Persona
+  </mat-card-title>
+  <mat-card-content>
+    <div class="form-content" [formGroup]="formPerson">
+      <div class="form-control-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="lastname">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Documento</mat-label>
+          <mat-select formControlName="documentTypeId">
+            <mat-option *ngFor="let type of documentTypes" [value]="type.id">{{type.shortName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Numero de Documento</mat-label>
+          <input matInput formControlName="documentNumber">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-raised-button (click)="cancelar()"> Cancelar</button>
+    <button mat-raised-button (click)="guardar()" [disabled]="formPerson.invalid"> Guardar</button>
+  </mat-card-footer>
+</mat-card>
