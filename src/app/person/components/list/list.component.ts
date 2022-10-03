@@ -29,13 +29,19 @@ export class ListComponent implements OnInit {
     })
   }
 
-  editarPerson(person: any): void {
-    alert('Editando persona ' + person.name)
+  editPerson(person: any): void {
+    alert('Editará los datos de ' + person.name)
+    this.router.navigate(['/person/edit/'+person.id], {
+      relativeTo: this.activatedRoute
+    })
   }
 
   deletePerson(person: any): void {
-    alert('Eliminado persona ' + person.name)
-
+    if(confirm('¿Está seguro de eliminar a '+person.name+'? con ID: '+person.id)){
+      this.personService.delete(person.id).subscribe(() => {
+        this.getPerson()
+      })
+    }
   }
 
   agregarPerson(): void {

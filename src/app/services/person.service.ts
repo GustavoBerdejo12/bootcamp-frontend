@@ -31,4 +31,8 @@ export class PersonService {
   getTypeDocument(): Observable<any> {
     return this.httpclient.get(`${environment.apiUrl}/documentType`);
   }
+
+  getPersonById(idPerson: any): Observable<any> {
+    return this.httpclient.get(`${environment.apiUrl}/person/${idPerson}`,);
+  }
 }
